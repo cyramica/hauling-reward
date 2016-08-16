@@ -71,6 +71,15 @@
         collateral = collateral.replace(/[^\d\.\-\ ]/g, '');
         var jumps = $('#jumps').val();
         jumps = jumps.replace(/[^\d\.\-\ ]/g, '');
+        // Set a basic pickup fee to this percentage of the collateral
+        // This will be capped to 1% maximum further down.
+        var pickupFee = collateral*0.005;
+        // Set the minimum/basic price per jump
+        var pricePerJump = 500000;
+        // Increase the precentage of the collateral that we take based on jumps by this percentage
+        // This is to reflect the increased risk and time spent by the hauler.
+        var incPerJump = 1.002; 
+        var pickupReward = 0;
         var reward = 0;
         var base_rate = 0;
         // Shamelessly ripped from stack overflow
@@ -78,26 +87,11 @@
           return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
         }
 
-        // Base Rate
-        if (jumps <= 10) {
-          base_rate = 1000000;
-        } else {
-          if (jumps <= 15) {
-            base_rate = 750000;
-          } else {
-            if (jumps <= 25) {
-              base_rate = 500000;
-            } else {
-              base_rate = 250000;
-            }
-          }
-        }
+        // Let's do some magic then
+        base_rate = pricePerJump * jumps;
+        pickupReward = pickupFee*incPerJump^jumps;
         // Reward
-        if (collateral * 0.001 < base_rate) {
-          reward = base_rate * jumps;
-        } else {
-          reward = collateral * 0.001 * jumps;
-        }
+        reward = base_rate+pickupReward;
 
         // Extra Fees
         if ($('#rush').prop('checked')) {

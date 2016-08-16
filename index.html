@@ -97,7 +97,7 @@
             if (baseColPercentage >= 0.01) { break; }
         }
         
-        pickupFee = collateral*baseColPercentage
+        pickupFee = collateral*baseColPercentage;
         pickupReward = pickupFee*incPerJump^jumps;
         reward = base_rate+pickupReward;
 

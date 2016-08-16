@@ -80,7 +80,7 @@
         var pricePerJump = 500000;
         // Increase the precentage of the collateral that we take based on jumps by this percentage
         // This is to reflect the increased risk and time spent by the hauler.
-        var incPerJump = 0.002; 
+        var incPerJump = 1.002; 
         var pickupReward = 0;
         var reward = 0;
         var base_rate = 0;
@@ -93,11 +93,12 @@
         base_rate = pricePerJump*jumps;
         
         for (i = 1; i < jumps; i++) {
-            baseColPercentage += incPerJump;
+            baseColPercentage += 0.001;
             if (baseColPercentage >= 0.01) { break; }
         }
         
-        pickupReward = pickupFee*baseColPercentage^jumps;
+        pickupFee = collateral*baseColPercentage
+        pickupReward = pickupFee*incPerJump^jumps;
         reward = base_rate+pickupReward;
 
         // Extra Fees
@@ -181,7 +182,7 @@
           </div>
           <!-- Footer -->
           <div class="disclaimer_footer">
-            <p class="center-align" style="color: #FFFFFF"><span style="color: yellow">Disclaimer3: </span>The Final Price is entirely up to yourself.</p>
+            <p class="center-align" style="color: #FFFFFF"><span style="color: yellow">Disclaimer5: </span>The Final Price is entirely up to yourself.</p>
             <p class="center-align" style="color: #FFFFFF"> This calculator is intended for people new to courier contracts, anything under</p>
             <p class="center-align" style="color: #FFFFFF">these values will normally move slower than normal., and possibly not at all.</p>
             <p class="center-align" style="color: #FFFFFF"><strong>Note: <i>The more you pay </i> = the less you wait.</strong></p>

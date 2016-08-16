@@ -140,7 +140,7 @@
           <!-- Header -->
           <div class="header col s12">
             <h1 class="center-align title" style="color: #FFFFFF; font-size: 8em">Haulers Channel</h1>
-            <h4 class="grey-text darken-3 center-align title" style="margin-top: -20px; margin-bottom: 60px; font-size: 2em">Base Rate Calculator</h4>
+            <h4 class="grey-text darken-3 center-align title" style="margin-top: -20px; margin-bottom: 60px; font-size: 2em">Improved Base Rate Calculator</h4>
           </div>
           <!--<hr>-->
           <!-- Input Area -->
@@ -191,9 +191,16 @@
           <!-- Footer -->
           <div class="disclaimer_footer">
             <p class="center-align" style="color: #FFFFFF"><span style="color: yellow">Disclaimer12: </span>The Final Price is entirely up to yourself.</p>
-            <p class="center-align" style="color: #FFFFFF"> This calculator is intended for people new to courier contracts, anything under</p>
-            <p class="center-align" style="color: #FFFFFF">these values will normally move slower than normal., and possibly not at all.</p>
-            <p class="center-align" style="color: #FFFFFF"><strong>Note: <i>The more you pay </i> = the less you wait.</strong></p>
+            <p class="center-align" style="color: #FFFFFF"><strong>Note: <i></i>The more you pay </i> = the less you wait.</strong></p>
+            <p class="center-align" style="color: #FFFFFF">This is an attempt at an improved version of the original Hauler Channel base rate calculator.
+                                                           The algorithm has been replaced to provide an exponential function to the price curve which places
+                                                           a higher importance on the collateral; benefiting both haulers who take on higher risk, and traders
+                                                           who will pay less of a percentage on low collaterals.
+                                                           
+                                                           The old calculator is flawed and will for instance pay you the same reward for a 10 jump
+                                                           130 mil collateral contract as a 20 jump, and then pay an even smaller reward for 30 jumps!
+                                                           
+                                                           I'm sure this one isn't perfect either, so please EVEMail <span style="color: yellow">Cyramica</span> if you have any issues!</p>
           </div>
         </div>
       </div>

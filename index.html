@@ -192,9 +192,12 @@
             <p class="center-align" style="color: #FFFFFF"><strong>Note: <i></i>The more you pay </i> = the less you wait.</strong></p>
             <br><br><br><br><br>
             <p class="center-align" style="color: #FFFFFF">This is an attempt at an improved version of the original Hauler Channel base rate calculator.<br>
-                                                           The algorithm has been replaced to provide an exponential function to the price curve which places<br>
-                                                           a higher importance on the collateral; benefiting both haulers who take on higher risk, and traders<br>
-                                                           who will pay less of a percentage on low collaterals.<br>
+                                                           The algorithm has been replaced to provide an exponential price curve until the price per jump<br>
+                                                           matches with 0.1% of the collateral at which point the PPJ becomes linear.<br>
+                                                           My hope is for this to benefit haulers who take on more risk with high collaterals, traders who<br>
+                                                           will pay less for low collateral items as well as optimize prices around the average jump ranges<br>
+                                                           and still provide an incentive for very short hauls.<br>
+                                                           <a href="http://imgur.com/a/NQ4Ip">Here's</a> an ugly graph showing the new price points versus the old<br>
                                                            <br>
                                                            The old calculator is flawed and will for instance pay you the same reward for a 10 jump<br>
                                                            130 mil collateral contract as a 20 jump, and then pay an even smaller reward for 30 jumps!<br>

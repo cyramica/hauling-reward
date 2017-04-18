@@ -7,7 +7,7 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.5/css/materialize.min.css">
   <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.5/js/materialize.min.js"></script>
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-  <script>
+ <script>
     $(document).ready(function(){
 
       // Used by the auto copy to clipboard
@@ -103,18 +103,23 @@
             reward = collateral*0.001*jumps;
         }
 
+        // To safeguard against unusually low collaterals, lets set the reward to 30% if our algorithm above would bring it over 50% of the collateral
+        // so that the reward doesn't get higher than the collateral.       
+        if (reward >= (collateral*0.5) ) {
+          reward = collateral*0.3;
+        }
+        
         // Let's round up to make it look purdy
         reward = Math.round(reward/1000)*1000;
-
+        
         // Extra Fees
         if ($('#rush').prop('checked')) {
           reward = reward * 2;
         }
-
+        
         if ($('#lowsec').prop('checked')) {
           reward = reward * 2;
         }
-        
         // updates prices displayed in text
         if (reward > 0) {
           $('#reward_label').addClass('active');
@@ -127,7 +132,7 @@
         }
       });
     });
-  </script>
+ </script>
 </head>
 <body class="grey darken-3">
   <div class="container">
